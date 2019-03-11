@@ -13,16 +13,24 @@
 
   </head>
   <body>
+<style>
 
+.mdc-top-app-bar{
+background-color:#1a00db;}
+</style>
       <!-- notice the data-mdc-auto-init attribute;  this value is used by the autoinit script -->
       <aside class="mdc-drawer mdc-drawer--modal" data-mdc-auto-init="MDCDrawer">
       <div class="mdc-drawer__content">
-        <nav class="mdc-list">
+        <nav background-class="mdc-list">
+          <a class="mdc-list-item "id="writeUp"  href="#" aria-selected="true">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">assignment</i>
+            <span class="mdc-list-item__text">Description</span>
+          </a>
           <a class="mdc-list-item mdc-list-item--activated"id="draft"  href="#" aria-selected="true">
             <i class="material-icons mdc-list-item__graphic" aria-hidden="true">build</i>
             <span class="mdc-list-item__text">Hard Ware/Set up</span>
           </a>
-          <a class="mdc-list-item" id="soft" href="#">
+          <a class="mdc-list-item" id="soft" href="https://github.com/Benbigmac/HEART-RATE-AND-BREATHING-MONITER/tree/master/HeartRate.ino">
             <i class="material-icons mdc-list-item__graphic" aria-hidden="true">code</i>
             <span class="mdc-list-item__text">Software</span>
           </a>
@@ -72,6 +80,7 @@
     $(document).ready(function () {
       // initializes all elements with the data-mdc-auto-init attribute
       window.mdc.autoInit();
+      $("#content").load("hardware.html");
       // creating a var reference just to save code later
       var drawer = $("aside")[0].MDCDrawer;
       // when menu icon is click, toggle drawer open property
@@ -79,23 +88,24 @@
         drawer.open = !drawer.open;
       });
       // could/should/would add an event handler for the drawer items;  click should close the drawer
+      $('#writeUp').click(function(){
+
+      $("#content").load("writeUp.html");
+     drawer.open = !drawer.open;
+    });
 
           $('#draft').click(function(){
 
         $("#content").load("hardware.html");
            drawer.open = !drawer.open;
           });
-      $('#inbox').click(function(){
 
-        $("#content").load("software.html");
-       drawer.open = !drawer.open;
-      });
-        $('#3rd').click(function(){
+        $('#data').click(function(){
 
         $("#content").load("results.html");
        drawer.open = !drawer.open;
       });
-    })
+    });
 
     </script>
 
