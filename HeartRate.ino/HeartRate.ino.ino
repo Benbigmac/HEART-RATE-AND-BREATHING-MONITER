@@ -102,19 +102,15 @@ void loop() {
   else{
     // send the value of analog input 0:
      heartRate=analogRead(A0);
+     Respiration=analogRead(A1);
      Serial.println(heartRate);
-     ble.print("heartRate\n");
+     ble.print(Respiration)
+     ble.print(",");
+     ble.print(heartRate);
+     ble.print("\n");
      if(heartRate>60){
-        for (int thisNote = 0; thisNote < 15; thisNote++) {
-    int noteDuration = 1000 / noteDurations[thisNote];
-    tone(8, melody[thisNote], noteDuration);
-    int pauseBetweenNotes = noteDuration * 1.30;
-    delay(pauseBetweenNotes);
-    // stop the tone playing:
-    noTone(8);
-  }
-     }{
-      tone(8, melody[thisNote]);
+  
+ 
      }
       
   }
