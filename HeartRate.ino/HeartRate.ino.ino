@@ -42,7 +42,7 @@ void error(const __FlashStringHelper*err) {
   Serial.println(err);
   while (1);
 }
-    
+
 void setup() {
   // initialize the serial communication:
   Serial.begin(9600);
@@ -95,7 +95,7 @@ void setup() {
 }
 
 void loop() {
-  
+
   if((digitalRead(10) == 1)||(digitalRead(11) == 1)){
     Serial.println('!');
   }
@@ -108,8 +108,8 @@ void loop() {
      ble.print(",");
      ble.print(heartRate);
      ble.print("\n");
- 
-      
+
+
   }
   //Wait for a bit to keep serial data from saturating
   delay(1);
