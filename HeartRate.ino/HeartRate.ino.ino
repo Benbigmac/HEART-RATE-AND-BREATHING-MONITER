@@ -21,17 +21,10 @@
 int heartRateReading=A0;
 int Respiration=A1;
 int buzzerPin = 9;
-int anoyingSOund = 8;
+int lightUp = 8;
 int heartRate=0;
 
-int melody[] = {
-  NOTE_E7, NOTE_E7, NOTE_F7, NOTE_G7, NOTE_G7, NOTE_F7, NOTE_E7, NOTE_DS7, NOTE_C7, NOTE_C7, NOTE_D7, NOTE_E7, NOTE_E7, NOTE_DS7, NOTE_DS7,0
-};
 
-// note durations: 4 = quarter note, 8 = eighth note, etc.:
-int noteDurations[] = {
-  4, 4, 4, 4, 4, 4, 4, 4,4, 4, 4, 4, 2, 4
-};
 
     #define FACTORYRESET_ENABLE         0
     #define MINIMUM_FIRMWARE_VERSION    "0.6.6"
@@ -49,7 +42,7 @@ void setup() {
   pinMode(10, INPUT); // Setup for leads off detection LO +
   pinMode(11, INPUT); // Setup for leads off detection LO -
   pinMode(buzzerPin, INPUT); //Gives you a buzz when you a little too paniced
-  pinMode(anoyingSOund, INPUT);
+  pinMode(lightUp, INPUT);
   Serial.print(F("Initialising the Bluefruit LE module: "));
 
   if ( !ble.begin(VERBOSE_MODE) )
@@ -108,7 +101,13 @@ void loop() {
      ble.print(",");
      ble.print(heartRate);
      ble.print("\n");
-
+     
+   if(heartRate>180){ //need to change or calculate the heart rate
+      digitalWrite(lightUp, HIGH);
+      
+   }else{
+      digitalWrite(lightUp, LOW);
+   }
 
   }
   //Wait for a bit to keep serial data from saturating
